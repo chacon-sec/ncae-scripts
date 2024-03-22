@@ -9,7 +9,7 @@ if [ -z "$team_num" ]; then
     exit 1
 fi
 
-# Construct the iptables commands with the provided team_num
+# port forwarding with team num
 iptables_cmd1="sudo iptables -t nat -A PREROUTING -d 172.18.13.${team_num} -p tcp --dport 80 -j DNAT --to-destination 192.168.${team_num}.5:80"
 iptables_cmd2="sudo iptables -t nat -A PREROUTING -d 172.18.13.${team_num} -p tcp --dport 443 -j DNAT --to-destination 192.168.${team_num}.5:443"
 iptables_cmd3="sudo iptables -t nat -A PREROUTING -d 172.18.13.${team_num} -p udp --dport 53 -j DNAT --to-destination 192.168.${team_num}.12:53"
@@ -37,7 +37,7 @@ echo "Executing iptables command 5:"
 echo "$iptables_cmd5"
 eval "$iptables_cmd5"
 
-# Additional iptables commands
+# Egress Rules
 iptables_cmd6="sudo iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT"
 iptables_cmd7="sudo iptables -A OUTPUT -d 192.168.${team_num}.1/24 -j ACCEPT"
 iptables_cmd8="sudo iptables -P OUTPUT DROP"
