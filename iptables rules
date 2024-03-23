@@ -1,12 +1,20 @@
+FIRST PUT UP THE ROUTER
+https://docs.google.com/document/d/1QIyOL9Kg1znrP3vxEkuLKU6vcpnhlAII9l6PQdQ3UoI/edit
+___________________________________________________________________________________________________________________________________________________________________________________________________________________
 PORT FORWARDING RULES - DO THESE FIRST
 
-sudo iptables -t nat -A PREROUTING -d 172.18.13.{team_num} -p tcp --dport 80 -j DNAT --to-destination 192.168.{team_num}.5:80
-sudo iptables -t nat -A PREROUTING -d 172.18.13.{team_num} -p tcp --dport 443 -j DNAT --to-destination 192.168.{team_num}.5:443
-sudo iptables -t nat -A PREROUTING -d 172.18.13.{team_num} -p udp --dport 53 -j DNAT --to-destination 192.168.{team_num}.12:53
-sudo iptables -t nat -A PREROUTING -d 172.18.13.{team_num} -p tcp --dport 5432 -j DNAT --to-destination 192.168.{team_num}.7:5432
+sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 80 -j DNAT --to-destination 192.168.13.5:80
+sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 443 -j DNAT --to-destination 192.168.13.5:443
+sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p udp --dport 53 -j DNAT --to-destination 192.168.13.12:53
+sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 53 -j DNAT --to-destination 192.168.13.12:53
+sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 5432 -j DNAT --to-destination 192.168.13.7:5432
 sudo iptables -t nat -A POSTROUTING -j MASQUERADE
 
 EGRESS RULES - DO AFTER PORT FORWARDING
 sudo iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-sudo iptables -A OUTPUT -d 192.168.{team_num}.1/24 -j ACCEPT
+sudo iptables -A OUTPUT -d 192.168.13.1/24 -j ACCEPT
 sudo iptables -P OUTPUT DROP
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+BACKUPS (cp -rp, tar -zcf ___.tar.gz __) (Decrypt: tar -xf)
