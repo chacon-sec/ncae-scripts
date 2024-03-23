@@ -10,7 +10,7 @@ sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 53 -j DNAT --t
 sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 5432 -j DNAT --to-destination 192.168.13.7:5432
 sudo iptables -t nat -A POSTROUTING -j MASQUERADE
 
-EGRESS RULES - DO AFTER PORT FORWARDING
+EGRESS RULES - (DONT DO THESE)
 sudo iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 sudo iptables -A OUTPUT -d 192.168.13.1/24 -j ACCEPT
 sudo iptables -P OUTPUT DROP
