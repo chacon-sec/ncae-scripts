@@ -17,6 +17,9 @@ THEN RUN PW CHANGING SCRIPT
 ________________________________________________________________________________________________________________________________________________________________________________________________________________
 PORT FORWARDING RULES - DO THESE FIRS
 
+sudo systemctl stop firewall.d
+sudo systemctl disable firewall.d
+
 sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 80 -j DNAT --to-destination 192.168.12.5:80
 sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 443 -j DNAT --to-destination 192.168.12.5:443
 sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p udp --dport 53 -j DNAT --to-destination 192.168.12.12:53
