@@ -1,7 +1,10 @@
 
 ________________________________________________________________________________________________________________________________________________________________________________________________________________
-<h1> FIRST PUT UP THE ROUTER </h1>
+FIRST PUT UP THE ROUTER
 https://docs.google.com/document/d/1QIyOL9Kg1znrP3vxEkuLKU6vcpnhlAII9l6PQdQ3UoI/edit
+
+https://i.gyazo.com/ef056017d48d1a71e775465bc0f3688a.png
+https://i.gyazo.com/f716221280179e0874ce3dde0fb7a3f1.png
 ________________________________________________________________________________________________________________________________________________________________________________________________________________
 RUN BENCH MARK
 lsmod > kernel_modules_$(date | tr " " "_")
@@ -14,11 +17,11 @@ THEN RUN PW CHANGING SCRIPT
 ________________________________________________________________________________________________________________________________________________________________________________________________________________
 PORT FORWARDING RULES - DO THESE FIRS
 
-sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 80 -j DNAT --to-destination 192.168.13.5:80
-sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 443 -j DNAT --to-destination 192.168.13.5:443
-sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p udp --dport 53 -j DNAT --to-destination 192.168.13.12:53
-sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 53 -j DNAT --to-destination 192.168.13.12:53
-sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 5432 -j DNAT --to-destination 192.168.13.7:5432
+sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 80 -j DNAT --to-destination 192.168.12.5:80
+sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 443 -j DNAT --to-destination 192.168.12.5:443
+sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p udp --dport 53 -j DNAT --to-destination 192.168.12.12:53
+sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 53 -j DNAT --to-destination 192.168.12.12:53
+sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 5432 -j DNAT --to-destination 192.168.12.7:5432
 sudo iptables -t nat -A POSTROUTING -j MASQUERADE
 
 EGRESS RULES - (DONT DO THESE)
