@@ -27,12 +27,21 @@ sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 53 -j DNAT --t
 sudo iptables -t nat -A PREROUTING -d 172.18.13.13 -p tcp --dport 5432 -j DNAT --to-destination 192.168.12.7:5432
 sudo iptables -t nat -A POSTROUTING -j MASQUERADE
 
-EGRESS RULES - (DONT DO THESE)
-sudo iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-sudo iptables -A OUTPUT -d 192.168.13.1/24 -j ACCEPT
-sudo iptables -P OUTPUT DROP
+AFTER PORT FORWARDING DO THESE RULES
 
-__________________________________________________________________________________________________________________________________________________________________________________________________________________
+#Accept ICMP requests
+iptables -A INPUT -p icmp -j ACCEPT
+
+#Drop all else
+iptables -A OUTPUT -s <router-ip> -j DROP
+iptables -P INPUT DROP
+
+#SAVE THE IPTABLES RULES
+sudo iptables-save > /etc/sysconfig/.iptables.rules
+
+#IF ROUTER RESTARTS, RELOAD IPTABLES RULES
+sudo iptables-restore < /etc/sysconfig/iptables
+_________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 CHECKING TO SEE IF PORT FORWARDING IS ENABLED
 
@@ -40,8 +49,6 @@ forcheck
 
 sysctl -w net.ipv4.ip_forward=1
 sysctl net.ipv4.ip_forward # check that its on
-
-iptables -A POSTROUTING -j MASQUERADE
 __________________________________________________________________________________________________________________________________________________________________________________________________________________
 SCRIPT FOR CHANGING PASSWORD
 
@@ -60,6 +67,7 @@ ________________________________________________________________________________
 IF CANT INSTALL 
 su - <command>
 _______________________________________________________________________________________________________________________________________________________________________________________________________________
+#CHECK TO SEE IF PING IS ON, 0 MEANS ON, 1 MEANS OFF
 icheck
 cat /proc/sys/net/ipv4/icmp_echo_ignore_all (CHECK TO SEE IF 0)
 
