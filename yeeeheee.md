@@ -47,6 +47,9 @@ ________________________________________________________________________________
 _______________________________________________________________________________________________________________________________________________________________
 BACKUPS
 ```
+# Make the directory
+mkdir /etc/sysconfig/.centos7b
+
 # Copy important files aswell as the whole directory
 cp -rp ifcfg-eth0 /etc/sysconfig/.centos7b/ifcfg-eth0.backup
 cp -rp ifcfg-eth1 /etc/sysconfig/.centos7b/ifcfg-eth1.backup
