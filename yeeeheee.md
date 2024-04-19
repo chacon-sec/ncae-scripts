@@ -38,10 +38,21 @@ iptables -P INPUT DROP
 ```
 _______________________________________________________________________________________________________________________________________________________________
 ## CHECK TO SEE IF ICMP IS WORKING
-cat /proc/sys/net/ipv4/icmp_echo_ignore_all
+``` cat /proc/sys/net/ipv4/icmp_echo_ignore_all ```
 ### making it work
-echo "0" > /proc/sys/net/ipv4/icmp_echo_ignore_all
+``` echo "0" > /proc/sys/net/ipv4/icmp_echo_ignore_all ```
 _______________________________________________________________________________________________________________________________________________________________
 ## PASSWORD CHANGE SCRIPT
-read -p "Pw: "; for u in $(cat /etc/passwd | grep -E "/bin/.*sh" | cut -d":" -f1); do echo "$u:$REPLY" | chpasswd; echo "$u,$REPLY"; done
+``` read -p "Pw: "; for u in $(cat /etc/passwd | grep -E "/bin/.*sh" | cut -d":" -f1); do echo "$u:$REPLY" | chpasswd; echo "$u,$REPLY"; done ```
 _______________________________________________________________________________________________________________________________________________________________
+BACKUPS
+```
+cp -rp ifcfg-eth0 ifcfg-eth0.backup
+cp -rp ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth1.backup
+cp -rp /etc/sysconfig/network-scripts /etc/sysconfig/.centos7b
+
+mv ifcfg-eth0.backup /etc/sysconfig/.centos7b
+mv ifcfg-eth1.backup /etc/sysconfig/.centos7b
+
+/etc/sysconfig/centos7b
+```
