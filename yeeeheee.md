@@ -28,7 +28,7 @@ iptables -A INPUT -p icmp -j ACCEPT
 
 # Drop anything with source ip of our router (rev shells)
 # https://serverfault.com/questions/479618/how-can-i-block-all-traffic-that-is-coming-to-and-from-an-ip-address-using-iptab
-# iptables -A INPUT -d <router-ip> -j DROP
+# iptables -A INPUT -d <whatever im tryna drop> -j DROP
 iptables -A OUTPUT -s <router-ip> -j DROP
 
 # Drop all else
