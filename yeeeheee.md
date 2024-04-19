@@ -22,6 +22,8 @@ sudo iptables -t nat -A PREROUTING -d 172.18.13.<team_num> -p tcp --dport 80 -j 
 sudo iptables -t nat -A PREROUTING -d 172.20.13.<team_num> -p tcp --dport 443 -j DNAT --to-destination 192.168.<team_num>.5:443
 sudo iptables -t nat -A PREROUTING -d 172.20.13.<team_num> -p udp --dport 53 -j DNAT --to-destination 192.168.<team_num>.12:53
 sudo iptables -t nat -A POSTROUTING -j MASQUERADE
+sysctl -w net.ipv4.ip_forward=1
+
 
 # Accept ICMP requests
 iptables -A INPUT -p icmp -j ACCEPT
