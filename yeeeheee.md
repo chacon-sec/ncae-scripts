@@ -1,4 +1,4 @@
-___________________________________________________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________________________________________
 ## FIRST PUT UP THE ROUTER
 https://docs.google.com/document/d/1QIyOL9Kg1znrP3vxEkuLKU6vcpnhlAII9l6PQdQ3UoI/edit
 
@@ -47,12 +47,15 @@ ________________________________________________________________________________
 _______________________________________________________________________________________________________________________________________________________________
 BACKUPS
 ```
-cp -rp ifcfg-eth0 ifcfg-eth0.backup
-cp -rp ifcfg-eth0 /etc/sysconfig/network-scripts/ifcfg-eth1.backup
-cp -rp /etc/sysconfig/network-scripts /etc/sysconfig/.centos7b
+# Copy important files aswell as the whole directory
+cp -rp ifcfg-eth0 /etc/sysconfig/.centos7b/ifcfg-eth0.backup
+cp -rp ifcfg-eth1 /etc/sysconfig/.centos7b/ifcfg-eth1.backup
+cp -rp /etc/sysconfig/network-scripts /etc/sysconfig/.centos7b/network-scripts
 
-mv ifcfg-eth0.backup /etc/sysconfig/.centos7b
-mv ifcfg-eth1.backup /etc/sysconfig/.centos7b
+# To move them back
+cp -rp /etc/sysconfig/.centos7b/ifcfg-eth0.backup /etc/sysconfig/network-scripts/ifcfg-eth0
+cp -rp /etc/sysconfig/.centos7b/ifcfg-eth1.backup /etc/sysconfig/network-scripts/ifcfg-eth1
 
-/etc/sysconfig/centos7b
+cd /etc/sysconfig/.centos7b
 ```
+_______________________________________________________________________________________________________________________________________________________________
