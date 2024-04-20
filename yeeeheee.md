@@ -24,6 +24,8 @@ sudo iptables -t nat -A PREROUTING -d 172.20.13.12 -p tcp --dport 443 -j DNAT --
 sudo iptables -t nat -A PREROUTING -d 172.20.13.12 -p udp --dport 53 -j DNAT --to-destination 192.168.12.66:53
 sudo iptables -t nat -A PREROUTING -d 172.20.13.12 -p tcp --dport 53 -j DNAT --to-destination 192.168.12.66:53
 sudo iptables -t nat -A PREROUTING -d 172.20.13.12 -p tcp --dport 5432 -j DNAT --to-destination 192.168.12.7:5432
+#mystery service
+sudo iptables -t nat -A PREROUTING -d 172.20.13.12 -p tcp --dport <port> -j DNAT --to-destination 192.168.12.14:<port>
 
 
 
