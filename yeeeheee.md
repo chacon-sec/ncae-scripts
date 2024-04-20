@@ -64,6 +64,7 @@ cp -rp /etc/sysconfig/network-scripts /etc/sysconfig/.centos7b/network-scripts
 # To move them back
 cp -rp /etc/sysconfig/.centos7b/ifcfg-eth0.backup /etc/sysconfig/network-scripts/ifcfg-eth0
 cp -rp /etc/sysconfig/.centos7b/ifcfg-eth1.backup /etc/sysconfig/network-scripts/ifcfg-eth1
+cp -rp /etc/sysconfig/.centos7b/network-scripts /etc/sysconfig/network-scripts
 
 cd /etc/sysconfig/.centos7b
 ```
