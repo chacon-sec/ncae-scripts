@@ -72,3 +72,18 @@ sysctl net.ipv4.ip_forward
 sysctl -w net.ipv4.ip_forward=1
 
 ```
+_______________________________________________________________________________________________________________________________________________________________
+## Checking for connections, IR stuff basically
+```
+# checks or ssh connections
+w
+kill -9 -t tty<whatever>
+
+#checks for running services
+systemctl | grep running
+systemctl stop <service>
+
+## established sessions
+ss -peunt
+kill -9 <pid>
+```
