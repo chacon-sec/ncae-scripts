@@ -45,7 +45,7 @@ ________________________________________________________________________________
 ## PASSWORD CHANGE SCRIPT
 ``` read -p "Pw: "; for u in $(cat /etc/passwd | grep -E "/bin/.*sh" | cut -d":" -f1); do echo "$u:$REPLY" | chpasswd; echo "$u,$REPLY"; done ```
 _______________________________________________________________________________________________________________________________________________________________
-BACKUPS
+## BACKUPS
 ```
 # Make the directory
 mkdir /etc/sysconfig/.centos7b
@@ -62,3 +62,4 @@ cp -rp /etc/sysconfig/.centos7b/ifcfg-eth1.backup /etc/sysconfig/network-scripts
 cd /etc/sysconfig/.centos7b
 ```
 _______________________________________________________________________________________________________________________________________________________________
+## Checking port forwarding 
