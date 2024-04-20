@@ -41,6 +41,9 @@ iptables -P INPUT DROP
 sudo iptables-save > /etc/iptables/rules.v4
 # restore that jawn
 sudo iptables-restore < /etc/iptables/rules.v4
+
+# put a rule at the top
+sudo iptables -t nat -A PREROUTING -d <router external ip> -p tcp --dport <port> -j DNAT --to-destination <box ip>:<port>
 ```
 _______________________________________________________________________________________________________________________________________________________________
 ## CHECK TO SEE IF ICMP IS WORKING
