@@ -19,9 +19,14 @@ sudo iptables -F -t nat
 
 # our port forwards
 # sudo iptables -t nat -A PREROUTING -d <router external ip> -p tcp --dport <port> -j DNAT --to-destination <box ip>:<port>
-sudo iptables -t nat -A PREROUTING -d 172.18.13.<team_num> -p tcp --dport 80 -j DNAT --to-destination 192.168.<team_num>.5:80
-sudo iptables -t nat -A PREROUTING -d 172.20.13.<team_num> -p tcp --dport 443 -j DNAT --to-destination 192.168.<team_num>.5:443
-sudo iptables -t nat -A PREROUTING -d 172.20.13.<team_num> -p udp --dport 53 -j DNAT --to-destination 192.168.<team_num>.12:53
+sudo iptables -t nat -A PREROUTING -d 172.18.13.12 -p tcp --dport 80 -j DNAT --to-destination 192.168.12.5:80
+sudo iptables -t nat -A PREROUTING -d 172.20.13.12 -p tcp --dport 443 -j DNAT --to-destination 192.168.12.5:443
+sudo iptables -t nat -A PREROUTING -d 172.20.13.12 -p udp --dport 53 -j DNAT --to-destination 192.168.12.66:53
+sudo iptables -t nat -A PREROUTING -d 172.20.13.12 -p tcp --dport 53 -j DNAT --to-destination 192.168.12.66:53
+sudo iptables -t nat -A PREROUTING -d 172.20.13.12 -p tcp --dport 5532 -j DNAT --to-destination 192.168.12.7:5332
+
+
+
 sudo iptables -t nat -A POSTROUTING -j MASQUERADE
 sysctl -w net.ipv4.ip_forward=1
 
