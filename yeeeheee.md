@@ -65,6 +65,10 @@ cd /etc/sysconfig/.centos7b
 _______________________________________________________________________________________________________________________________________________________________
 ## Checking port forwarding 
 ```
-sysctl -w net.ipv4.ip_forward=1
+# check to see if port forward
 sysctl net.ipv4.ip_forward
+
+# actually portforward
+sysctl -w net.ipv4.ip_forward=1
+
 ```
