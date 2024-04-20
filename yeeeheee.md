@@ -97,6 +97,8 @@ ________________________________________________________________________________
 ## Use this for iptables and make a script
 ```
 touch iptables.sh
+# this is going to put it on a new line
+# to run this put a #!/bin/bash in the file
 echo "your_content" >> filename
 ```
 ______________________________________________________________________________________________________________________________________________________________
