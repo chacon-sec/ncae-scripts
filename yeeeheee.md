@@ -47,7 +47,7 @@ iptables -P INPUT DROP
 # save the rules
 sudo iptables-save > /etc/iptables/rules.v4
 # restore that jawn
-sudo iptables-restore < /etc/iptables/rules.v4
+sudo iptables-restore < /etc/sysconfig/.centos7b/rules.v4
 
 # put a rule at the top, istead of -A do -I
 sudo iptables -t nat -I PREROUTING -d <router external ip> -p tcp --dport <port> -j DNAT --to-destination <box ip>:<port>
