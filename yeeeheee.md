@@ -35,7 +35,12 @@ iptables -A INPUT -p icmp -j ACCEPT
 iptables -A OUTPUT -s <router-ip> -j DROP
 
 # Drop all else
-iptables -P INPUT DROP  
+iptables -P INPUT DROP
+
+# save the rules
+sudo iptables-save > /etc/iptables/rules.v4
+# restore that jawn
+sudo iptables-restore < /etc/iptables/rules.v4
 ```
 _______________________________________________________________________________________________________________________________________________________________
 ## CHECK TO SEE IF ICMP IS WORKING
@@ -79,11 +84,11 @@ ________________________________________________________________________________
 w
 kill -9 -t tty<whatever>
 
-#checks for running services
+# checks for running services
 systemctl | grep running
 systemctl stop <service>
 
-## established sessions
+# established sessions
 ss -peunt
 kill -9 <pid>
 ```
